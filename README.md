@@ -1,4 +1,4 @@
-# ✈ iro.codes
+# ✈ Irem Idil
 
 Personal portfolio -  styled as an airport terminal.  
 Departures board, passport, gate info, flight status.
