@@ -286,12 +286,14 @@
     background: var(--amber);
     border-radius: 2px;
   }
-  .status-pct {
+  .status-lbl {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10px;
     color: var(--amber);
-    width: 36px;
+    width: 100px;
     text-align: right;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   /* ── CONTACT / GATE ── */
@@ -319,6 +321,39 @@
     display: flex;
     justify-content: space-between;
   }
+
+  /* ── TICKER STRIP ── */
+  .ticker-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #060709;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    overflow: hidden;
+  }
+  .ticker-arrow { color: var(--amber); }
+  .ticker-text {
+    color: var(--amber);
+    min-width: 220px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+  }
+  .ticker-slot {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .ticker-slot.exit-up   { transform: translateY(-100%); opacity: 0; }
+  .ticker-slot.enter-down{ transform: translateY(100%);  opacity: 0; }
 
   /* split-flap hero text */
   .hero-callsign {
@@ -363,6 +398,12 @@
 <div class="fids-hero">
   <div class="fids-label">▶ DEPARTURES — PORTFOLIO</div>
   <div class="hero-callsign" id="hero-text">Irem.Idil</div>
+  <div class="ticker-strip">
+    <span class="ticker-arrow">▶</span>
+    <div class="ticker-text" id="ticker">
+      <span class="ticker-slot" id="ticker-slot">3 PROJECTS SHIPPED</span>
+    </div>
+  </div>
   <div class="hero-sub">Computer Engineering Student · Full-Stack · Automation · AI</div>
 
   <!-- FIDS TABLE -->
@@ -505,27 +546,27 @@
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">React / Next.js</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:85%"></div></div>
-      <span class="status-pct">85%</span>
+      <span class="status-lbl">solid</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">Node / Express</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:78%"></div></div>
-      <span class="status-pct">78%</span>
+      <span class="status-lbl">pretty good</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">Python / ML</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:60%"></div></div>
-      <span class="status-pct">60%</span>
+      <span class="status-lbl">decent</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">SQL / Postgres</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:70%"></div></div>
-      <span class="status-pct">70%</span>
+      <span class="status-lbl">comfortable</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">n8n / Automation</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:80%"></div></div>
-      <span class="status-pct">80%</span>
+      <span class="status-lbl">actually good</span>
     </div>
   </div>
 
@@ -534,17 +575,17 @@
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">Data Mining</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:55%;background:var(--blue)"></div></div>
-      <span class="status-pct" style="color:var(--blue)">55%</span>
+      <span class="status-lbl" style="color:var(--blue)">in progress</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">AI/ML (course)</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:40%;background:var(--blue)"></div></div>
-      <span class="status-pct" style="color:var(--blue)">40%</span>
+      <span class="status-lbl" style="color:var(--blue)">boarding</span>
     </div>
     <div class="flight-status-row">
       <span style="width:110px;font-size:12px">Docker / DevOps</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:30%;background:var(--blue)"></div></div>
-      <span class="status-pct" style="color:var(--blue)">30%</span>
+      <span class="status-lbl" style="color:var(--blue)">taxiing</span>
     </div>
   </div>
 </div>
@@ -617,6 +658,31 @@
       }
     }, 55);
   });
+
+  // ── TICKER FLIP ──
+  const tickerLines = [
+    '3 PROJECTS SHIPPED',
+    'ISTANBUL → ANYWHERE',
+    'BUILDS THINGS THAT WORK',
+    'FUTURE 2027 GRADUATE',
+    'CURRENTLY: INTERN @ LOGITRANS',
+    'CATS: 3 · BUGS FIXED: MORE',
+  ];
+  let tickerIdx = 0;
+  const tickerEl = document.getElementById('ticker-slot');
+  setInterval(() => {
+    tickerIdx = (tickerIdx + 1) % tickerLines.length;
+    // exit current
+    tickerEl.classList.add('exit-up');
+    setTimeout(() => {
+      tickerEl.textContent = tickerLines[tickerIdx];
+      tickerEl.classList.remove('exit-up');
+      tickerEl.classList.add('enter-down');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        tickerEl.classList.remove('enter-down');
+      }));
+    }, 260);
+  }, 2800);
 
   // ── SCROLL REVEAL ──
   const observer = new IntersectionObserver(entries => {
