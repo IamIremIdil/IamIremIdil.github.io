@@ -31,6 +31,31 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
+/*
+*/
+::-webkit-scrollbar-thumb {
+    background:
+        repeating-linear-gradient(
+            180deg,
+            #ffbf47 0px,
+            #ffbf47 5px,
+            #d98d0f 5px,
+            #d98d0f 10px
+        );
+    border: 1px solid #252a30;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--amber);
+    box-shadow:
+        0 0 10px rgba(245,166,35,.45),
+        inset 0 0 3px rgba(255,255,255,.15);
+}
+/*
+*/
+
+
 
   /* ── TOP BAR ── */
   .topbar {
