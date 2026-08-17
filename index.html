@@ -132,7 +132,7 @@
   }
   .status-boarding { background: rgba(34,197,94,0.15); color: var(--green); }
   .status-departed { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .status-ontimw { background: rgba(245,166,35,0.12); color: var(--amber); }
+  .status-ontime { background: rgba(245,166,35,0.12); color: var(--amber); }
 
   /* ── REAL SPLIT-FLAP ── */
   .flap-char {
@@ -441,7 +441,7 @@
       <div>GATE</div>
       <div>STATUS</div>
     </div>
-    <div class="fids-row" onclick="scrollTo(0,600)">
+    <div class="fids-row" onclick="document.getElementById('projects-panel').scrollIntoView({ behavior: 'smooth' })">
       <div class="flight-num">IR-001</div>
       <div class="flight-name">StudyNest</div>
       <div class="flight-gate">React · Node · Socket.io</div>
@@ -467,7 +467,7 @@
       <div class="flight-name">n8n Automation Suite</div>
       <div class="flight-gate">n8n · REST · Webhooks</div>
       <div class="flight-gate">G4</div>
-      <div><span class="status-pill status-ontimw">On Time</span></div>
+      <div><span class="status-pill status-ontime">On Time</span></div>
     </div>
   </div>
 </div>
@@ -513,7 +513,7 @@
           <div class="card-flight">IR-004 · ON TIME</div>
           <div class="project-title" style="margin-top:4px">n8n Automation Projects</div>
         </div>
-        <span class="status-pill status-ontimw">Active</span>
+        <span class="status-pill status-ontime">Active</span>
       </div>
       <div class="project-desc">Internal company automations: webhook pipelines, data sync, notification routing, report generation.</div>
       <div class="project-tags">
@@ -556,12 +556,28 @@
     </div>
 
     <!-- GATE / CONTACT -->
-    <div class="panel-label" style="margin-top:28px">Gate Info · Contact</div>
-    <div class="gate-info">
-      <div class="gate-row"><span>GITHUB</span><a href="#">github.com/iamiremidil</a></div>
-      <div class="gate-row"><span>LINKEDIN</span><a href="#">linkedin.com/in/iamiremidil</a></div>
-      <div class="gate-row"><span>EMAIL</span><a href="#">iamiremidil@gmail.com</a></div>
-    </div>
+<div class="panel-label" style="margin-top: 28px">Gate Info · Contact</div>
+
+<div class="gate-info">
+  <div class="gate-row">
+    <span>GITHUB</span>
+    <a href="https://github.com/iamiremidil" target="_blank" rel="noopener noreferrer">
+      github.com/iamiremidil
+    </a>
+  </div>
+
+  <div class="gate-row">
+    <span>LINKEDIN</span>
+    <a href="https://linkedin.com/in/iamiremidil" target="_blank" rel="noopener noreferrer">
+      linkedin.com/in/iamiremidil
+    </a>
+  </div>
+
+  <div class="gate-row">
+    <span>EMAIL</span>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iamiremidil@gmail.com" target="_blank" rel="noopener noreferrer">
+      iamiremidil@gmail.com
+    </a>
   </div>
 </div>
 
