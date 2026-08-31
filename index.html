@@ -31,32 +31,16 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-/*
-*/
-::-webkit-scrollbar-thumb {
-    background:
-        repeating-linear-gradient(
-            180deg,
-            #ffbf47 0px,
-            #ffbf47 5px,
-            #d98d0f 5px,
-            #d98d0f 10px
-        );
+
+  ::-webkit-scrollbar-thumb {
+    background: repeating-linear-gradient(180deg,#ffbf47 0px,#ffbf47 5px,#d98d0f 5px,#d98d0f 10px);
     border: 1px solid #252a30;
     border-radius: 8px;
-}
-
-::-webkit-scrollbar-thumb:hover {
+  }
+  ::-webkit-scrollbar-thumb:hover {
     background: var(--amber);
-    box-shadow:
-        0 0 10px rgba(245,166,35,.45),
-        inset 0 0 3px rgba(255,255,255,.15);
-}
-/*
-*/
-/* hmm
-*/
-
+    box-shadow: 0 0 10px rgba(245,166,35,.45), inset 0 0 3px rgba(255,255,255,.15);
+  }
 
   /* ── TOP BAR ── */
   .topbar {
@@ -112,10 +96,13 @@
     border-bottom: 1px solid #0f1215;
     font-size: 13px;
     align-items: center;
-    transition: background 0.15s;
+    transition: background 0.15s, box-shadow 0.15s;
     cursor: pointer;
   }
-  .fids-row:hover { background: #13181e; }
+  .fids-row:hover {
+    background: #1a1200;
+    box-shadow: inset 0 0 0 1px var(--amber-dim), 0 0 12px rgba(245,166,35,0.08);
+  }
   .fids-row:last-child { border-bottom: none; }
 
   .flight-num { color: var(--amber); font-weight: bold; }
@@ -132,23 +119,17 @@
   }
   .status-boarding { background: rgba(34,197,94,0.15); color: var(--green); }
   .status-departed { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .status-ontime { background: rgba(245,166,35,0.12); color: var(--amber); }
+  .status-ontime   { background: rgba(245,166,35,0.12); color: var(--amber); }
 
-  /* ── REAL SPLIT-FLAP ── */
-  .flap-char {
-    display: inline-block;
-    position: relative;
-    perspective: 80px;
-  }
-  .flap-char.flipping {
-    animation: flip3d 0.08s steps(1) 3;
-  }
+  /* ── SPLIT-FLAP HERO ── */
+  .flap-char { display: inline-block; position: relative; perspective: 80px; }
+  .flap-char.flipping { animation: flip3d 0.08s steps(1) 3; }
   @keyframes flip3d {
-    0%   { transform: rotateX(0deg);    opacity: 1;   }
-    25%  { transform: rotateX(90deg);   opacity: 0.4; }
-    50%  { transform: rotateX(0deg);    opacity: 1;   }
-    75%  { transform: rotateX(-45deg);  opacity: 0.6; }
-    100% { transform: rotateX(0deg);    opacity: 1;   }
+    0%   { transform: rotateX(0deg);   opacity: 1;   }
+    25%  { transform: rotateX(90deg);  opacity: 0.4; }
+    50%  { transform: rotateX(0deg);   opacity: 1;   }
+    75%  { transform: rotateX(-45deg); opacity: 0.6; }
+    100% { transform: rotateX(0deg);   opacity: 1;   }
   }
 
   /* ── SCROLL REVEAL ── */
@@ -157,10 +138,7 @@
     transform: translateY(12px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── SOUND TOGGLE ── */
   .sound-btn {
@@ -176,7 +154,13 @@
   }
   .sound-btn:hover { border-color: var(--amber); color: var(--amber); }
 
-  /* ── SECTIONS ── */
+  /* ── SECTION LAYOUT ── */
+  /*
+    Three rows:
+    1) Projects (left) | Passport + Gate Info (right)
+    2) Skills (left)   | Currently Learning (right)
+    3) Experience (full width, collapsible)
+  */
   .section-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -212,7 +196,6 @@
     border-radius: 3px;
     padding: 16px;
     margin-bottom: 12px;
-    position: relative;
     transition: border-color 0.2s;
   }
   .project-card:hover { border-color: var(--amber-dim); }
@@ -224,12 +207,7 @@
   }
   .project-title { font-weight: 600; font-size: 14px; }
   .project-desc { color: var(--muted); font-size: 12px; line-height: 1.5; }
-  .project-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
   .tag {
     font-family: var(--mono);
     font-size: 10px;
@@ -238,35 +216,19 @@
     padding: 2px 6px;
     border-radius: 2px;
   }
+  .card-flight { font-family: var(--mono); font-size: 10px; color: var(--amber); }
 
-  /* flight indicator on card */
-  .card-flight {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--amber);
-  }
-
-  /* ── ABOUT / PASSPORT ── */
-  .passport-panel {
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-  }
+  /* ── PASSPORT ── */
+  .passport-panel { display: flex; gap: 24px; align-items: flex-start; }
   .passport-photo {
-    width: 80px;
-    height: 100px;
+    width: 80px; height: 100px;
     background: var(--border);
     border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; flex-shrink: 0;
   }
   .passport-data { flex: 1; }
-  .passport-field {
-    margin-bottom: 12px;
-  }
+  .passport-field { margin-bottom: 12px; }
   .passport-field-label {
     font-family: var(--mono);
     font-size: 9px;
@@ -275,10 +237,7 @@
     text-transform: uppercase;
     margin-bottom: 2px;
   }
-  .passport-field-value {
-    font-size: 13px;
-    color: var(--text);
-  }
+  .passport-field-value { font-size: 13px; color: var(--text); }
   .passport-mrz {
     font-family: var(--mono);
     font-size: 9px;
@@ -290,7 +249,19 @@
     word-break: break-all;
   }
 
-  /* ── CURRENTLY LEARNING / FLIGHT STATUS ── */
+  /* ── GATE / CONTACT ── */
+  .gate-info { font-family: var(--mono); font-size: 13px; }
+  .gate-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #0f1215;
+    color: var(--muted);
+  }
+  .gate-row a { color: var(--amber); text-decoration: none; }
+  .gate-row a:hover { text-decoration: underline; }
+
+  /* ── SKILL BARS ── */
   .flight-status-row {
     display: flex;
     align-items: center;
@@ -307,11 +278,7 @@
     border-radius: 2px;
     overflow: hidden;
   }
-  .status-bar-fill {
-    height: 100%;
-    background: var(--amber);
-    border-radius: 2px;
-  }
+  .status-bar-fill { height: 100%; background: var(--amber); border-radius: 2px; }
   .status-lbl {
     font-family: var(--mono);
     font-size: 10px;
@@ -322,78 +289,143 @@
     text-transform: uppercase;
   }
 
-  /* ── CONTACT / GATE ── */
-  .gate-info {
-    font-family: var(--mono);
-    font-size: 13px;
+  /* ── EXPERIENCE SECTION ── */
+  .exp-section {
+    border-bottom: 1px solid var(--border);
   }
-  .gate-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #0f1215;
-    color: var(--muted);
-  }
-  .gate-row a { color: var(--amber); text-decoration: none; }
-  .gate-row a:hover { text-decoration: underline; }
-
-  /* ── FOOTER ── */
-  footer {
+  .exp-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
     padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-family: var(--mono);
     font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: left;
+    transition: background 0.15s, box-shadow 0.15s;
+    border-bottom: 1px solid transparent;
+  }
+  .exp-toggle:hover {
+    background: #1a1200;
+    box-shadow: 0 0 18px rgba(245,166,35,0.1);
+    border-bottom-color: var(--amber-dim);
+  }
+  .exp-toggle::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .exp-caret {
+    transition: transform 0.25s ease;
+    font-size: 12px;
+  }
+  .exp-toggle.open .exp-caret { transform: rotate(90deg); }
+  .exp-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+  }
+  .exp-body.open { grid-template-rows: 1fr; }
+  .exp-inner { overflow: hidden; }
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 0 32px 32px;
+  }
+  .exp-card {
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 20px;
+    margin: 8px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .exp-card:hover { border-color: var(--amber-dim); }
+  .exp-card-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .exp-card-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .exp-card-company { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+  .exp-bullets { list-style: none; padding: 0; }
+  .exp-bullets li {
+    font-size: 11px;
     color: var(--muted);
-    border-top: 1px solid var(--border);
+    line-height: 1.6;
+    padding: 4px 0;
+    border-top: 1px solid #0f1215;
     display: flex;
-    justify-content: space-between;
+    gap: 8px;
+  }
+  .exp-bullets li::before { content: '▸'; color: var(--amber-dim); flex-shrink: 0; margin-top: 1px; }
+  .cert-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid #0f1215;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .cert-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--amber);
+    border: 1px solid var(--amber-dim);
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
   }
 
   /* ── TICKER STRIP ── */
-.ticker-strip {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #060709;
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  padding: 4px 12px;
-  margin-bottom: 20px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-  overflow: hidden;
-}
-.ticker-arrow { 
-  color: var(--amber);
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  font-size: 12px; /* Slightly smaller to match text height */
-}
-.ticker-text {
-  color: var(--amber);
-  min-width: 220px;
-  position: relative;
-  height: 16px; /* Back to original height */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-.ticker-slot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; /* This ensures it fills the container */
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  display: flex;
-  align-items: center;
-}
-.ticker-slot.exit-up   { transform: translateY(-100%); opacity: 0; }
-.ticker-slot.enter-down{ transform: translateY(100%);  opacity: 0; }
+  .ticker-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #060709;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    overflow: hidden;
+  }
+  .ticker-arrow { color: var(--amber); display: flex; align-items: center; font-size: 12px; }
+  .ticker-text {
+    color: var(--amber);
+    min-width: 220px;
+    position: relative;
+    height: 16px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .ticker-slot {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    display: flex; align-items: center;
+  }
+  .ticker-slot.exit-up    { transform: translateY(-100%); opacity: 0; }
+  .ticker-slot.enter-down { transform: translateY(100%);  opacity: 0; }
 
-  /* split-flap hero text */
+  /* hero text */
   .hero-callsign {
     font-family: var(--mono);
     font-size: clamp(36px, 6vw, 72px);
@@ -409,9 +441,21 @@
     font-family: var(--mono);
   }
 
-  @media (max-width: 700px) {
+  /* ── FOOTER ── */
+  footer {
+    padding: 20px 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 900px) {
     .section-grid { grid-template-columns: 1fr; }
     .panel { border-right: none; border-bottom: 1px solid var(--border); }
+    .exp-grid { grid-template-columns: 1fr; }
     .fids-header, .fids-row { grid-template-columns: 70px 1fr 80px 80px; }
     .fids-header > *:nth-child(5), .fids-row > *:nth-child(5) { display: none; }
   }
@@ -435,7 +479,7 @@
 <!-- HERO -->
 <div class="fids-hero">
   <div class="fids-label">▶ DEPARTURES — PORTFOLIO</div>
-  <div class="hero-callsign" id="hero-text">Irem.Idil</div>
+  <div class="hero-callsign" id="hero-text">Irem&nbsp;Idil</div>
   <div class="ticker-strip">
     <span class="ticker-arrow">▶</span>
     <div class="ticker-text" id="ticker">
@@ -444,7 +488,6 @@
   </div>
   <div class="hero-sub">Computer Engineering Student · Full-Stack · Automation · AI</div>
 
-  <!-- FIDS TABLE -->
   <div class="fids-board">
     <div class="fids-header">
       <div>FLIGHT</div>
@@ -453,42 +496,47 @@
       <div>GATE</div>
       <div>STATUS</div>
     </div>
-    <div class="fids-row" onclick="document.getElementById('projects-panel').scrollIntoView({ behavior: 'smooth' })">
+    <div class="fids-row" onclick="document.getElementById('projects-panel').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-001</div>
       <div class="flight-name">StudyNest</div>
-      <div class="flight-gate">React · Node · Socket.io</div>
+      <div class="flight-gate">React · Node</div>
       <div class="flight-gate">G1</div>
       <div><span class="status-pill status-boarding">Boarding</span></div>
     </div>
-    <div class="fids-row">
+    <div class="fids-row" onclick="document.getElementById('card-gh').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-002</div>
       <div class="flight-name">GitHub Live Dashboard</div>
       <div class="flight-gate">React · GitHub API</div>
       <div class="flight-gate">G2</div>
       <div><span class="status-pill status-departed">Departed</span></div>
     </div>
-    <div class="fids-row">
-      <div class="flight-num">IR-003</div>
-      <div class="flight-name">Pomodoro + Friend System</div>
-      <div class="flight-gate">React · Supabase</div>
-      <div class="flight-gate">G3</div>
-      <div><span class="status-pill status-departed">Departed</span></div>
-    </div>
-    <div class="fids-row">
+    <div class="fids-row" onclick="document.getElementById('card-n8n').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-004</div>
       <div class="flight-name">n8n Automation Suite</div>
       <div class="flight-gate">n8n · REST · Webhooks</div>
-      <div class="flight-gate">G4</div>
+      <div class="flight-gate">G3</div>
       <div><span class="status-pill status-ontime">On Time</span></div>
+    </div>
+    <div class="fids-row" onclick="openExpAndScrollTo('exp-section')">
+      <div class="flight-num">IR-EXP</div>
+      <div class="flight-name">Experience · Flight Log</div>
+      <div class="flight-gate">Logitrans Logistics</div>
+      <div class="flight-gate">G4</div>
+      <div><span class="status-pill status-ontime">View ▸</span></div>
+    </div>
+    <div class="fids-row" onclick="openExpAndScrollTo('cert-section')">
+      <div class="flight-num">IR-CERT</div>
+      <div class="flight-name">Certifications</div>
+      <div class="flight-gate">Stanford · Coursera</div>
+      <div class="flight-gate">G5</div>
+      <div><span class="status-pill status-boarding">Verified</span></div>
     </div>
   </div>
 </div>
 
-<!-- PROJECTS + PASSPORT -->
+<!-- ROW 1: PROJECTS + PASSPORT -->
 <div class="section-grid">
-
-  <!-- LEFT: PROJECTS -->
-  <div class="panel reveal">
+  <div class="panel reveal" id="projects-panel">
     <div class="panel-label">Projects · Baggage Claim</div>
 
     <div class="project-card">
@@ -505,7 +553,7 @@
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" id="card-gh">
       <div class="project-card-top">
         <div>
           <div class="card-flight">IR-002 · DEPARTED</div>
@@ -519,7 +567,7 @@
       </div>
     </div>
 
-    <div class="project-card">
+    <div class="project-card" id="card-n8n">
       <div class="project-card-top">
         <div>
           <div class="card-flight">IR-004 · ON TIME</div>
@@ -567,79 +615,136 @@
       </div>
     </div>
 
-    <!-- GATE / CONTACT -->
-<div class="panel-label" style="margin-top: 28px">Gate Info · Contact</div>
-
-<div class="gate-info">
-  <div class="gate-row">
-    <span>GITHUB</span>
-    <a href="https://github.com/iamiremidil" target="_blank" rel="noopener noreferrer">
-      github.com/iamiremidil
-    </a>
-  </div>
-
-  <div class="gate-row">
-    <span>LINKEDIN</span>
-    <a href="https://linkedin.com/in/iamiremidil" target="_blank" rel="noopener noreferrer">
-      linkedin.com/in/iamiremidil
-    </a>
-  </div>
-
-  <div class="gate-row">
-    <span>EMAIL</span>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iamiremidil@gmail.com" target="_blank" rel="noopener noreferrer">
-      iamiremidil@gmail.com
-    </a>
+    <div class="panel-label" style="margin-top:28px">Gate Info · Contact</div>
+    <div class="gate-info">
+      <div class="gate-row">
+        <span>GITHUB</span>
+        <a href="https://github.com/iamiremidil" target="_blank" rel="noopener noreferrer">github.com/iamiremidil</a>
+      </div>
+      <div class="gate-row">
+        <span>LINKEDIN</span>
+        <a href="https://linkedin.com/in/iamiremidil" target="_blank" rel="noopener noreferrer">linkedin.com/in/iamiremidil</a>
+      </div>
+      <div class="gate-row" style="border-bottom:none">
+        <span>EMAIL</span>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iamiremidil@gmail.com" target="_blank" rel="noopener noreferrer">iamiremidil@gmail.com</a>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- FLIGHT STATUS / SKILLS -->
+<!-- ROW 2: SKILLS + CURRENTLY LEARNING (aligned below row 1) -->
 <div class="section-grid">
   <div class="panel reveal">
     <div class="panel-label">Flight Status · Skills</div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">html/CSS</span>
+      <span style="width:120px;font-size:12px">HTML / CSS</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:50%"></div></div>
       <span class="status-lbl">not bad</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">Node / Express</span>
+      <span style="width:120px;font-size:12px">Node / Express</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:78%"></div></div>
       <span class="status-lbl">good</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">Python / ML</span>
+      <span style="width:120px;font-size:12px">Python / ML</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:60%"></div></div>
       <span class="status-lbl">decent</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">mongoDB</span>
+      <span style="width:120px;font-size:12px">MongoDB</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:70%"></div></div>
       <span class="status-lbl">decent</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">n8n / Automation</span>
+      <span style="width:120px;font-size:12px">n8n / Automation</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:80%"></div></div>
       <span class="status-lbl">great</span>
     </div>
   </div>
 
-  <div class="panel">
+  <div class="panel reveal">
     <div class="panel-label">Currently Learning · Boarding</div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">Web Development</span>
+      <span style="width:120px;font-size:12px">Web Development</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:55%;background:var(--blue)"></div></div>
       <span class="status-lbl" style="color:var(--blue)">in progress</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">AI/ML (course)</span>
+      <span style="width:120px;font-size:12px">AI/ML (course)</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:40%;background:var(--blue)"></div></div>
       <span class="status-lbl" style="color:var(--blue)">departed</span>
     </div>
     <div class="flight-status-row">
-      <span style="width:110px;font-size:12px">Docker / DevOps</span>
+      <span style="width:120px;font-size:12px">Docker</span>
       <div class="status-bar"><div class="status-bar-fill" style="width:30%;background:var(--blue)"></div></div>
       <span class="status-lbl" style="color:var(--blue)">taxiing</span>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE (collapsible) -->
+<div class="exp-section" id="exp-section">
+  <button class="exp-toggle" id="expToggle" onclick="toggleExp()">
+    <span class="exp-caret" id="expCaret">▶</span>
+    Experience · Flight Log
+  </button>
+  <div class="exp-body" id="expBody">
+    <div class="exp-inner">
+      <div class="exp-grid">
+
+        <div class="exp-card">
+          <div class="exp-card-label">IR-EXP-01 · VOLUNTARY INTERNSHIP </div>
+          <div class="exp-card-title">AI Agent Developer & Prompt Engineer</div>
+          <div class="exp-card-company">Logitrans Logistics</div>
+          <ul class="exp-bullets">
+            <li>Built and optimized AI agent workflows with n8n; integrated webhook-based pipelines with MongoDB knowledge bases and locally-run LLMs (Ollama / LLaMA 3.1).</li>
+            <li>Engineered prompts for structured LLM output in production pipelines; resolved context-overflow issues with multi-stage Code node filtering on large keyword datasets (~900 entries).</li>
+            <li>Hands-on experience in prompt engineering, agentic system design, and connecting disparate services via HTTP and custom automation flows.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-label">IR-EXP-02 · MANDATORY INTERNSHIP</div>
+          <div class="exp-card-title">OCR System Developer</div>
+          <div class="exp-card-company">Logitrans Logistics</div>
+          <ul class="exp-bullets">
+            <li>Built an OCR-based document processing pipeline to extract structured data from logistics documents (T1, export declarations, CMR, TIR carnet); automated buyer-seller matching and document grouping.</li>
+            <li>Integrated a RAG architecture with MongoDB for document type and party detection; AI agent operates on a custom knowledge base. Extracted data triggers email dispatch via a Node.js interface.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-card-label">IR-EXP-03 · MANDATORY INTERNSHIP · IN PROGRESS</div>
+          <div class="exp-card-title">Logistics Document Validation System</div>
+          <div class="exp-card-company">Logitrans Logistics</div>
+          <ul class="exp-bullets">
+            <li>Developing an end-to-end automation system for checking if logistics documents have inconsistencies or missing information.</li>
+            <li>The AI agent will take the OCR output, parse each document and determine the types for each document using the knowledgebases on mongoDB. It'll list missing documents or inconsistent information per record. Results will be written to MongoDB and displayed in the UI.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATIONS (collapsible) -->
+<div class="exp-section" id="cert-section">
+  <button class="exp-toggle" id="certToggle" onclick="toggleCert()">
+    <span class="exp-caret" id="certCaret">▶</span>
+    Certifications · Clearances
+  </button>
+  <div class="exp-body" id="certBody">
+    <div class="exp-inner">
+      <div style="padding: 0 40px 32px;">
+        <div class="exp-card" style="max-width:480px">
+          <div class="exp-card-label">IR-CERT-01 · VERIFIED</div>
+          <div class="exp-card-title">Machine Learning Specialization</div>
+          <div class="exp-card-company">Stanford University · Coursera &nbsp;|&nbsp; August 2024</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -653,13 +758,12 @@
 <script>
   // ── CLOCK ──
   function tick() {
-    const now = new Date();
     document.getElementById('clock').textContent =
-      now.toLocaleTimeString('en-GB', { hour12: false }) + ' UTC+3';
+      new Date().toLocaleTimeString('en-GB', { hour12: false }) + ' UTC+3';
   }
   tick(); setInterval(tick, 1000);
 
-  // ── WEB AUDIO DING ──
+  // ── SOUND ──
   let soundOn = true;
   const ctx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -676,7 +780,6 @@
   }
 
   function playBoardingChime() {
-    // classic 3-tone airport ding: D5 → A4 → F4
     [587, 440, 349].forEach((f, i) => setTimeout(() => playDing(f, 0.5), i * 220));
   }
 
@@ -686,17 +789,48 @@
     if (soundOn) { ctx.resume(); playDing(660, 0.3); }
   }
 
-  // ── REAL SPLIT-FLAP HERO ──
+  // ── COLLAPSIBLE HELPER ──
+  function openSection(bodyId, toggleId, caretId) {
+    const body   = document.getElementById(bodyId);
+    const toggle = document.getElementById(toggleId);
+    const caret  = document.getElementById(caretId);
+    const open   = body.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    caret.textContent = open ? '▼' : '▶';
+    if (open) {
+      playDing(740, 0.2);
+      setTimeout(() => body.querySelectorAll('.exp-card').forEach((c, i) => {
+        c.style.opacity = '0'; c.style.transform = 'translateY(8px)';
+        c.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 80);
+      }), 50);
+    }
+    return open;
+  }
+  function toggleExp()  { openSection('expBody',  'expToggle',  'expCaret');  }
+  function toggleCert() { openSection('certBody', 'certToggle', 'certCaret'); }
+
+  function openExpAndScrollTo(targetId) {
+    const isExp  = targetId === 'exp-section';
+    const isCert = targetId === 'cert-section';
+    if (isExp) {
+      const body = document.getElementById('expBody');
+      if (!body.classList.contains('open')) openSection('expBody','expToggle','expCaret');
+    }
+    if (isCert) {
+      const body = document.getElementById('certBody');
+      if (!body.classList.contains('open')) openSection('certBody','certToggle','certCaret');
+    }
+    setTimeout(() => document.getElementById(targetId).scrollIntoView({behavior:'smooth'}), 50);
+  }
+
+  // ── SPLIT-FLAP HERO ──
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-·';
   const target = 'Irem\u00A0Idil';
-  const el = document.getElementById('hero-text');
-
-  // Wrap each char in a span for 3D flip
-  el.innerHTML = target.split('').map((c, i) =>
+  const heroEl = document.getElementById('hero-text');
+  heroEl.innerHTML = target.split('').map((c, i) =>
     `<span class="flap-char" id="fc${i}">${c}</span>`
   ).join('');
-
-  // Scramble then resolve each char with flip animation
   target.split('').forEach((finalChar, i) => {
     const span = document.getElementById('fc' + i);
     let ticks = 0;
@@ -713,7 +847,7 @@
     }, 55);
   });
 
-  // ── TICKER FLIP ──
+  // ── TICKER ──
   const tickerLines = [
     '3 PROJECTS SHIPPED',
     'ISTANBUL → ANYWHERE',
@@ -726,15 +860,12 @@
   const tickerEl = document.getElementById('ticker-slot');
   setInterval(() => {
     tickerIdx = (tickerIdx + 1) % tickerLines.length;
-    // exit current
     tickerEl.classList.add('exit-up');
     setTimeout(() => {
       tickerEl.textContent = tickerLines[tickerIdx];
       tickerEl.classList.remove('exit-up');
       tickerEl.classList.add('enter-down');
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        tickerEl.classList.remove('enter-down');
-      }));
+      requestAnimationFrame(() => requestAnimationFrame(() => tickerEl.classList.remove('enter-down')));
     }, 260);
   }, 2800);
 
@@ -749,15 +880,12 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // ── FIDS ROW HOVER DING ──
+  // ── FIDS HOVER DING ──
   document.querySelectorAll('.fids-row').forEach(row => {
     row.addEventListener('mouseenter', () => playDing(1046, 0.15));
   });
 
-  // ── PLAY CHIME ON LOAD (after short delay) ──
-  window.addEventListener('load', () => {
-    setTimeout(playBoardingChime, 800);
-  });
+  window.addEventListener('load', () => setTimeout(playBoardingChime, 800));
 </script>
 </body>
 </html>
