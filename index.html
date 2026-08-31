@@ -597,46 +597,12 @@
     margin-top: 1px;
   }
 
-  /* ── CERTIFICATION ── */
+  /* ── CERTIFICATION GRID ── */
 
-  .cert-row {
-    display: flex;
-    align-items: center;
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    padding: 10px 0;
-    border-top: 1px solid #0f1215;
-    font-size: 11px;
-    color: var(--muted);
-  }
-
-  .cert-badge {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--amber);
-    border: 1px solid var(--amber-dim);
-    padding: 2px 6px;
-    border-radius: 2px;
-    white-space: nowrap;
-  }
-
-  .cert-logo {
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: #0d0f12;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-family: var(--mono);
-    font-size: 8px;
-    color: var(--amber);
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  .cert-info {
-    flex: 1;
   }
 
   .cert-link {
@@ -645,6 +611,7 @@
     font-size: 10px;
     text-decoration: none;
     margin-left: 6px;
+    white-space: nowrap;
   }
 
   .cert-link:hover {
@@ -692,17 +659,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.25s ease, opacity 0.25s ease;
     display: flex;
     align-items: center;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    will-change: transform, opacity;
   }
 
-  .ticker-slot.exit-up {
+  .ticker-slot.exit {
     transform: translateY(-100%);
     opacity: 0;
   }
 
-  .ticker-slot.enter-down {
+  .ticker-slot.enter {
     transform: translateY(100%);
     opacity: 0;
   }
@@ -748,6 +716,10 @@
     }
 
     .exp-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cert-grid {
       grid-template-columns: 1fr;
     }
 
@@ -967,18 +939,8 @@
           <div class="card-flight">IR-003 · ON TIME</div>
 
           <div class="project-title" style="margin-top:4px">
-            <a href="[N8N_PROJECT_REPO_URL]"
-               target="_blank"
-               rel="noopener noreferrer">
+            <a target="_blank" rel="noopener noreferrer">
               n8n Automation Projects
-            </a>
-
-            <a class="project-link"
-               href="[N8N_PROJECT_REPO_URL]"
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Open n8n Automation Projects">
-              ↗
             </a>
           </div>
         </div>
@@ -1010,7 +972,7 @@
 
     <div class="passport-panel">
 
-      <div class="passport-photo">
+      <div class="passport-photo" aria-hidden="true">
         ✈
       </div>
 
@@ -1028,7 +990,6 @@
           </div>
         </div>
 
-        <!-- NEW -->
         <div class="passport-field">
           <div class="passport-field-label">University</div>
           <div class="passport-field-value">
@@ -1036,7 +997,6 @@
           </div>
         </div>
 
-        <!-- NEW -->
         <div class="passport-field">
           <div class="passport-field-label">Graduation</div>
           <div class="passport-field-value">
@@ -1058,7 +1018,6 @@
           </div>
         </div>
 
-        <!-- NEW -->
         <div class="passport-field">
           <div class="passport-field-label">Languages</div>
           <div class="passport-field-value">
@@ -1266,7 +1225,9 @@
 
   <button class="exp-toggle"
           id="expToggle"
-          onclick="toggleExp()">
+          onclick="toggleExp()"
+          aria-controls="expBody"
+          aria-expanded="false">
 
     <span class="exp-caret" id="expCaret">▶</span>
     Experience · Flight Log
@@ -1296,10 +1257,9 @@
             Logitrans Logistics
           </div>
 
-          <!-- NEW IMPACT -->
           <div class="exp-impact">
             <span class="exp-impact-label">IMPACT //</span>
-            Automized customer support for logistics Q&A.
+            Automated customer support for logistics Q&A.
           </div>
 
           <ul class="exp-bullets">
@@ -1338,7 +1298,6 @@
             Logitrans Logistics
           </div>
 
-          <!-- NEW IMPACT -->
           <div class="exp-impact">
             <span class="exp-impact-label">IMPACT //</span>
             Automated document extraction and matching,
@@ -1381,7 +1340,6 @@
             Logitrans Logistics
           </div>
 
-          <!-- NEW IMPACT -->
           <div class="exp-impact">
             <span class="exp-impact-label">IMPACT //</span>
             Designed to reduce manual document validation and check for inconsistencies and missing information.
@@ -1423,7 +1381,9 @@
 
   <button class="exp-toggle"
           id="certToggle"
-          onclick="toggleCert()">
+          onclick="toggleCert()"
+          aria-controls="certBody"
+          aria-expanded="false">
 
     <span class="exp-caret" id="certCaret">▶</span>
     Certifications · Clearances
@@ -1437,47 +1397,36 @@
 
       <div style="padding: 0 40px 32px;">
 
-        <div class="exp-card" style="max-width:520px">
+        <div class="cert-grid">
 
-          <div class="exp-card-label">
-            IR-CERT-01 · VERIFIED
+          <!-- CERT 1 -->
+          <div class="exp-card">
+            <div class="exp-card-label">IR-CERT-01 · VERIFIED</div>
+            <div class="exp-card-title">Supervised Machine Learning</div>
+            <div class="exp-card-company">
+              Stanford · Coursera
+              <a class="cert-link" href="https://coursera.org/share/9e5886de762864c2e5d251246ef69cc3" target="_blank">↗ VERIFY</a>
+            </div>
           </div>
 
-
-          <div class="cert-row"
-               style="border-top:none;padding-top:0">
-
-            <!-- NEW LOGO PLACEHOLDER -->
-            <div class="cert-logo">
-              STANFORD<br>
-              LOGO
+          <!-- CERT 2 -->
+          <div class="exp-card">
+            <div class="exp-card-label">IR-CERT-02 · VERIFIED</div>
+            <div class="exp-card-title">Advanced Learning Algorithms</div>
+            <div class="exp-card-company">
+              Stanford · Coursera
+              <a class="cert-link" href="https://coursera.org/share/3a7a858ab96fbcdb8d60410018ccb3cf" target="_blank">↗ VERIFY</a>
             </div>
+          </div>
 
-
-            <div class="cert-info">
-
-              <div class="exp-card-title">
-                Machine Learning Specialization
-              </div>
-
-              <div class="exp-card-company"
-                   style="margin-bottom:0">
-
-                Stanford University · Coursera
-                &nbsp;|&nbsp; August 2024
-
-                <!-- NEW VERIFICATION LINK -->
-                <a class="cert-link"
-                   href="[https://coursera.org/share/9e5886de762864c2e5d251246ef69cc3]"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                  ↗ VERIFY
-                </a>
-
-              </div>
-
+          <!-- CERT 3 -->
+          <div class="exp-card">
+            <div class="exp-card-label">IR-CERT-03 · VERIFIED</div>
+            <div class="exp-card-title">Unsupervised Learning &amp; Recommenders</div>
+            <div class="exp-card-company">
+              Stanford · Coursera
+              <a class="cert-link" href="https://coursera.org/share/ae8d392f6b27d6c36b682a036c183089" target="_blank">↗ VERIFY</a>
             </div>
-
           </div>
 
         </div>
@@ -1608,6 +1557,8 @@
 
     caret.textContent =
       open ? '▼' : '▶';
+
+    toggle.setAttribute('aria-expanded', open);
 
     if (open) {
 
@@ -1793,7 +1744,7 @@
   );
 
 
-  // ── TICKER ──
+  // ── TICKER (glitch‑free) ──
 
   const tickerLines = [
 
@@ -1819,45 +1770,62 @@
       'ticker-slot'
     );
 
+  let isTickerAnimating = false;
 
-  setInterval(() => {
 
-    tickerIdx =
-      (tickerIdx + 1) %
-      tickerLines.length;
+  function updateTicker() {
 
-    tickerEl.classList.add(
-      'exit-up'
-    );
+    if (isTickerAnimating) return;
+
+    isTickerAnimating = true;
+
+
+    // 1. Slide up (exit)
+
+    tickerEl.classList.add('exit');
 
 
     setTimeout(() => {
 
+      // 2. Change text while hidden at top
+
+      tickerIdx =
+        (tickerIdx + 1) %
+        tickerLines.length;
+
       tickerEl.textContent =
         tickerLines[tickerIdx];
 
-      tickerEl.classList.remove(
-        'exit-up'
-      );
 
-      tickerEl.classList.add(
-        'enter-down'
-      );
+      // 3. Move to bottom (enter start position) without transition
+
+      tickerEl.classList.remove('exit');
+
+      tickerEl.classList.add('enter');
 
 
-      requestAnimationFrame(() =>
+      // Force reflow
 
-        requestAnimationFrame(() =>
-          tickerEl.classList.remove(
-            'enter-down'
-          )
-        )
+      void tickerEl.offsetHeight;
 
-      );
+
+      // 4. Slide down (enter)
+
+      tickerEl.classList.remove('enter');
+
+
+      setTimeout(() => {
+
+        isTickerAnimating = false;
+
+      }, 280);
 
     }, 260);
 
-  }, 2800);
+  }
+
+
+  setInterval(updateTicker, 3000);
 
 
   // ── SCROLL REVEAL ──
@@ -1901,11 +1869,35 @@
     );
 
 
-  // ── FIDS HOVER DING ──
+  // ── ACCESSIBILITY: FIDS ROWS (keyboard + role) ──
 
   document
     .querySelectorAll('.fids-row')
     .forEach(row => {
+
+      row.setAttribute('role', 'button');
+
+      row.setAttribute('tabindex', '0');
+
+
+      row.addEventListener(
+        'keydown',
+        (e) => {
+
+          if (
+            e.key === 'Enter' ||
+            e.key === ' '
+          ) {
+
+            e.preventDefault();
+
+            row.click(); // triggers the onclick
+
+          }
+
+        }
+      );
+
 
       row.addEventListener(
         'mouseenter',
