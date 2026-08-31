@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Irem Idil - Terminal Portfolio</title>
+
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600&display=swap');
 
@@ -33,16 +34,26 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: repeating-linear-gradient(180deg,#ffbf47 0px,#ffbf47 5px,#d98d0f 5px,#d98d0f 10px);
+    background: repeating-linear-gradient(
+      180deg,
+      #ffbf47 0px,
+      #ffbf47 5px,
+      #d98d0f 5px,
+      #d98d0f 10px
+    );
     border: 1px solid #252a30;
     border-radius: 8px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--amber);
-    box-shadow: 0 0 10px rgba(245,166,35,.45), inset 0 0 3px rgba(255,255,255,.15);
+    box-shadow:
+      0 0 10px rgba(245,166,35,.45),
+      inset 0 0 3px rgba(255,255,255,.15);
   }
 
   /* ── TOP BAR ── */
+
   .topbar {
     display: flex;
     justify-content: space-between;
@@ -54,15 +65,22 @@
     font-size: 11px;
     color: var(--muted);
   }
-  .topbar-left { display: flex; gap: 20px; }
+
+  .topbar-left {
+    display: flex;
+    gap: 20px;
+  }
+
   .topbar span.live { color: var(--green); }
   .topbar span.amber { color: var(--amber); }
 
   /* ── HERO / FIDS BOARD ── */
+
   .fids-hero {
     padding: 48px 32px 32px;
     border-bottom: 1px solid var(--border);
   }
+
   .fids-label {
     font-family: var(--mono);
     font-size: 11px;
@@ -71,6 +89,7 @@
     margin-bottom: 16px;
     text-transform: uppercase;
   }
+
   .fids-board {
     background: #0d0f12;
     border: 1px solid var(--border);
@@ -78,6 +97,7 @@
     overflow: hidden;
     font-family: var(--mono);
   }
+
   .fids-header {
     display: grid;
     grid-template-columns: 80px 1fr 120px 100px 100px;
@@ -89,6 +109,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+
   .fids-row {
     display: grid;
     grid-template-columns: 80px 1fr 120px 100px 100px;
@@ -99,15 +120,31 @@
     transition: background 0.15s, box-shadow 0.15s;
     cursor: pointer;
   }
+
   .fids-row:hover {
     background: #1a1200;
-    box-shadow: inset 0 0 0 1px var(--amber-dim), 0 0 12px rgba(245,166,35,0.08);
+    box-shadow:
+      inset 0 0 0 1px var(--amber-dim),
+      0 0 12px rgba(245,166,35,0.08);
   }
-  .fids-row:last-child { border-bottom: none; }
 
-  .flight-num { color: var(--amber); font-weight: bold; }
-  .flight-name { color: var(--text); }
-  .flight-gate { color: var(--muted); font-size: 12px; }
+  .fids-row:last-child {
+    border-bottom: none;
+  }
+
+  .flight-num {
+    color: var(--amber);
+    font-weight: bold;
+  }
+
+  .flight-name {
+    color: var(--text);
+  }
+
+  .flight-gate {
+    color: var(--muted);
+    font-size: 12px;
+  }
 
   .status-pill {
     display: inline-block;
@@ -117,30 +154,57 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .status-boarding { background: rgba(34,197,94,0.15); color: var(--green); }
-  .status-departed { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .status-ontime   { background: rgba(245,166,35,0.12); color: var(--amber); }
+
+  .status-boarding {
+    background: rgba(34,197,94,0.15);
+    color: var(--green);
+  }
+
+  .status-departed {
+    background: rgba(96,165,250,0.12);
+    color: var(--blue);
+  }
+
+  .status-ontime {
+    background: rgba(245,166,35,0.12);
+    color: var(--amber);
+  }
 
   /* ── SPLIT-FLAP HERO ── */
-  .flap-char { display: inline-block; position: relative; perspective: 80px; }
-  .flap-char.flipping { animation: flip3d 0.08s steps(1) 3; }
+
+  .flap-char {
+    display: inline-block;
+    position: relative;
+    perspective: 80px;
+  }
+
+  .flap-char.flipping {
+    animation: flip3d 0.08s steps(1) 3;
+  }
+
   @keyframes flip3d {
-    0%   { transform: rotateX(0deg);   opacity: 1;   }
-    25%  { transform: rotateX(90deg);  opacity: 0.4; }
-    50%  { transform: rotateX(0deg);   opacity: 1;   }
+    0%   { transform: rotateX(0deg); opacity: 1; }
+    25%  { transform: rotateX(90deg); opacity: 0.4; }
+    50%  { transform: rotateX(0deg); opacity: 1; }
     75%  { transform: rotateX(-45deg); opacity: 0.6; }
-    100% { transform: rotateX(0deg);   opacity: 1;   }
+    100% { transform: rotateX(0deg); opacity: 1; }
   }
 
   /* ── SCROLL REVEAL ── */
+
   .reveal {
     opacity: 0;
     transform: translateY(12px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ── SOUND TOGGLE ── */
+
   .sound-btn {
     background: none;
     border: 1px solid var(--border);
@@ -152,26 +216,30 @@
     border-radius: 2px;
     letter-spacing: 0.08em;
   }
-  .sound-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+  .sound-btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
 
   /* ── SECTION LAYOUT ── */
-  /*
-    Three rows:
-    1) Projects (left) | Passport + Gate Info (right)
-    2) Skills (left)   | Currently Learning (right)
-    3) Experience (full width, collapsible)
-  */
+
   .section-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
     border-bottom: 1px solid var(--border);
   }
+
   .panel {
     padding: 32px;
     border-right: 1px solid var(--border);
   }
-  .panel:last-child { border-right: none; }
+
+  .panel:last-child {
+    border-right: none;
+  }
+
   .panel-label {
     font-family: var(--mono);
     font-size: 10px;
@@ -183,6 +251,7 @@
     align-items: center;
     gap: 8px;
   }
+
   .panel-label::after {
     content: '';
     flex: 1;
@@ -190,7 +259,8 @@
     background: var(--border);
   }
 
-  /* project cards */
+  /* ── PROJECT CARDS ── */
+
   .project-card {
     border: 1px solid var(--border);
     border-radius: 3px;
@@ -198,16 +268,61 @@
     margin-bottom: 12px;
     transition: border-color 0.2s;
   }
-  .project-card:hover { border-color: var(--amber-dim); }
+
+  .project-card:hover {
+    border-color: var(--amber-dim);
+  }
+
   .project-card-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 8px;
   }
-  .project-title { font-weight: 600; font-size: 14px; }
-  .project-desc { color: var(--muted); font-size: 12px; line-height: 1.5; }
-  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+
+  .project-title {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .project-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .project-title a:hover {
+    color: var(--amber);
+  }
+
+  .project-link {
+    color: var(--amber);
+    font-family: var(--mono);
+    font-size: 12px;
+    margin-left: 5px;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.15s, text-shadow 0.15s;
+  }
+
+  .project-link:hover {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(245,166,35,.5);
+  }
+
+  .project-desc {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
   .tag {
     font-family: var(--mono);
     font-size: 10px;
@@ -216,19 +331,41 @@
     padding: 2px 6px;
     border-radius: 2px;
   }
-  .card-flight { font-family: var(--mono); font-size: 10px; color: var(--amber); }
+
+  .card-flight {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--amber);
+  }
 
   /* ── PASSPORT ── */
-  .passport-panel { display: flex; gap: 24px; align-items: flex-start; }
+
+  .passport-panel {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
   .passport-photo {
-    width: 80px; height: 100px;
+    width: 80px;
+    height: 100px;
     background: var(--border);
     border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px; flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
   }
-  .passport-data { flex: 1; }
-  .passport-field { margin-bottom: 12px; }
+
+  .passport-data {
+    flex: 1;
+  }
+
+  .passport-field {
+    margin-bottom: 12px;
+  }
+
   .passport-field-label {
     font-family: var(--mono);
     font-size: 9px;
@@ -237,7 +374,12 @@
     text-transform: uppercase;
     margin-bottom: 2px;
   }
-  .passport-field-value { font-size: 13px; color: var(--text); }
+
+  .passport-field-value {
+    font-size: 13px;
+    color: var(--text);
+  }
+
   .passport-mrz {
     font-family: var(--mono);
     font-size: 9px;
@@ -250,7 +392,12 @@
   }
 
   /* ── GATE / CONTACT ── */
-  .gate-info { font-family: var(--mono); font-size: 13px; }
+
+  .gate-info {
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
   .gate-row {
     display: flex;
     justify-content: space-between;
@@ -258,10 +405,18 @@
     border-bottom: 1px solid #0f1215;
     color: var(--muted);
   }
-  .gate-row a { color: var(--amber); text-decoration: none; }
-  .gate-row a:hover { text-decoration: underline; }
+
+  .gate-row a {
+    color: var(--amber);
+    text-decoration: none;
+  }
+
+  .gate-row a:hover {
+    text-decoration: underline;
+  }
 
   /* ── SKILL BARS ── */
+
   .flight-status-row {
     display: flex;
     align-items: center;
@@ -270,7 +425,11 @@
     border-bottom: 1px solid #0f1215;
     font-size: 13px;
   }
-  .flight-status-row:last-child { border-bottom: none; }
+
+  .flight-status-row:last-child {
+    border-bottom: none;
+  }
+
   .status-bar {
     flex: 1;
     height: 3px;
@@ -278,7 +437,13 @@
     border-radius: 2px;
     overflow: hidden;
   }
-  .status-bar-fill { height: 100%; background: var(--amber); border-radius: 2px; }
+
+  .status-bar-fill {
+    height: 100%;
+    background: var(--amber);
+    border-radius: 2px;
+  }
+
   .status-lbl {
     font-family: var(--mono);
     font-size: 10px;
@@ -290,9 +455,11 @@
   }
 
   /* ── EXPERIENCE SECTION ── */
+
   .exp-section {
     border-bottom: 1px solid var(--border);
   }
+
   .exp-toggle {
     width: 100%;
     background: none;
@@ -311,35 +478,50 @@
     transition: background 0.15s, box-shadow 0.15s;
     border-bottom: 1px solid transparent;
   }
+
   .exp-toggle:hover {
     background: #1a1200;
     box-shadow: 0 0 18px rgba(245,166,35,0.1);
     border-bottom-color: var(--amber-dim);
   }
+
   .exp-toggle::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--border);
   }
+
   .exp-caret {
     transition: transform 0.25s ease;
     font-size: 12px;
   }
-  .exp-toggle.open .exp-caret { transform: rotate(90deg); }
+
+  .exp-toggle.open .exp-caret {
+    transform: rotate(90deg);
+  }
+
   .exp-body {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease;
   }
-  .exp-body.open { grid-template-rows: 1fr; }
-  .exp-inner { overflow: hidden; }
+
+  .exp-body.open {
+    grid-template-rows: 1fr;
+  }
+
+  .exp-inner {
+    overflow: hidden;
+  }
+
   .exp-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0;
     padding: 0 32px 32px;
   }
+
   .exp-card {
     border: 1px solid var(--border);
     border-radius: 3px;
@@ -348,7 +530,11 @@
     transition: border-color 0.2s;
     position: relative;
   }
-  .exp-card:hover { border-color: var(--amber-dim); }
+
+  .exp-card:hover {
+    border-color: var(--amber-dim);
+  }
+
   .exp-card-label {
     font-family: var(--mono);
     font-size: 9px;
@@ -357,9 +543,43 @@
     text-transform: uppercase;
     margin-bottom: 6px;
   }
-  .exp-card-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
-  .exp-card-company { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
-  .exp-bullets { list-style: none; padding: 0; }
+
+  .exp-card-title {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .exp-card-company {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* ── IMPACT LINE ── */
+
+  .exp-impact {
+    border: 1px solid var(--amber-dim);
+    background: rgba(245,166,35,0.035);
+    padding: 9px 10px;
+    margin-bottom: 12px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--amber);
+    line-height: 1.5;
+  }
+
+  .exp-impact-label {
+    color: var(--muted);
+    margin-right: 6px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    padding: 0;
+  }
+
   .exp-bullets li {
     font-size: 11px;
     color: var(--muted);
@@ -369,7 +589,16 @@
     display: flex;
     gap: 8px;
   }
-  .exp-bullets li::before { content: '▸'; color: var(--amber-dim); flex-shrink: 0; margin-top: 1px; }
+
+  .exp-bullets li::before {
+    content: '▸';
+    color: var(--amber-dim);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── CERTIFICATION ── */
+
   .cert-row {
     display: flex;
     align-items: center;
@@ -379,6 +608,7 @@
     font-size: 11px;
     color: var(--muted);
   }
+
   .cert-badge {
     font-family: var(--mono);
     font-size: 9px;
@@ -389,7 +619,40 @@
     white-space: nowrap;
   }
 
+  .cert-logo {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    background: #0d0f12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 8px;
+    color: var(--amber);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .cert-info {
+    flex: 1;
+  }
+
+  .cert-link {
+    color: var(--amber);
+    font-family: var(--mono);
+    font-size: 10px;
+    text-decoration: none;
+    margin-left: 6px;
+  }
+
+  .cert-link:hover {
+    text-decoration: underline;
+  }
+
   /* ── TICKER STRIP ── */
+
   .ticker-strip {
     display: inline-flex;
     align-items: center;
@@ -405,7 +668,14 @@
     color: var(--muted);
     overflow: hidden;
   }
-  .ticker-arrow { color: var(--amber); display: flex; align-items: center; font-size: 12px; }
+
+  .ticker-arrow {
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+
   .ticker-text {
     color: var(--amber);
     min-width: 220px;
@@ -415,17 +685,30 @@
     display: flex;
     align-items: center;
   }
+
   .ticker-slot {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     transition: transform 0.25s ease, opacity 0.25s ease;
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
   }
-  .ticker-slot.exit-up    { transform: translateY(-100%); opacity: 0; }
-  .ticker-slot.enter-down { transform: translateY(100%);  opacity: 0; }
 
-  /* hero text */
+  .ticker-slot.exit-up {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  .ticker-slot.enter-down {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  /* ── HERO TEXT ── */
+
   .hero-callsign {
     font-family: var(--mono);
     font-size: clamp(36px, 6vw, 72px);
@@ -434,6 +717,7 @@
     line-height: 1;
     margin-bottom: 8px;
   }
+
   .hero-sub {
     font-size: 14px;
     color: var(--muted);
@@ -442,6 +726,7 @@
   }
 
   /* ── FOOTER ── */
+
   footer {
     padding: 20px 32px;
     font-family: var(--mono);
@@ -453,14 +738,32 @@
   }
 
   @media (max-width: 900px) {
-    .section-grid { grid-template-columns: 1fr; }
-    .panel { border-right: none; border-bottom: 1px solid var(--border); }
-    .exp-grid { grid-template-columns: 1fr; }
-    .fids-header, .fids-row { grid-template-columns: 70px 1fr 80px 80px; }
-    .fids-header > *:nth-child(5), .fids-row > *:nth-child(5) { display: none; }
+    .section-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .panel {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .fids-header,
+    .fids-row {
+      grid-template-columns: 70px 1fr 80px 80px;
+    }
+
+    .fids-header > *:nth-child(5),
+    .fids-row > *:nth-child(5) {
+      display: none;
+    }
   }
 </style>
 </head>
+
 <body>
 
 <!-- TOP BAR -->
@@ -470,25 +773,37 @@
     <span class="live">● LIVE</span>
     <span id="clock"></span>
   </div>
+
   <div style="display:flex;align-items:center;gap:16px">
-    <span>OPEN TO WORK &nbsp;|&nbsp; ISTANBUL (IST)</span>
+    <span>OPEN TO WORK | ISTANBUL (IST)</span>
     <button class="sound-btn" id="soundBtn" onclick="toggleSound()">♪ SFX ON</button>
   </div>
 </div>
 
+
 <!-- HERO -->
 <div class="fids-hero">
+
   <div class="fids-label">▶ DEPARTURES — PORTFOLIO</div>
-  <div class="hero-callsign" id="hero-text">Irem&nbsp;Idil</div>
+
+  <div class="hero-callsign" id="hero-text">Irem Idil</div>
+
   <div class="ticker-strip">
     <span class="ticker-arrow">▶</span>
+
     <div class="ticker-text" id="ticker">
-      <span class="ticker-slot" id="ticker-slot">3 PROJECTS SHIPPED</span>
+      <span class="ticker-slot" id="ticker-slot">
+        3 PROJECTS SHIPPED
+      </span>
     </div>
   </div>
-  <div class="hero-sub">Computer Engineering Student · Full-Stack · Automation · AI</div>
+
+  <div class="hero-sub">
+    Computer Engineering Student · Full-Stack · Automation · AI
+  </div>
 
   <div class="fids-board">
+
     <div class="fids-header">
       <div>FLIGHT</div>
       <div>PROJECT</div>
@@ -496,396 +811,1121 @@
       <div>GATE</div>
       <div>STATUS</div>
     </div>
-    <div class="fids-row" onclick="document.getElementById('projects-panel').scrollIntoView({behavior:'smooth'})">
+
+    <div class="fids-row"
+         onclick="document.getElementById('projects-panel').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-001</div>
       <div class="flight-name">StudyNest</div>
       <div class="flight-gate">React · Node</div>
       <div class="flight-gate">G1</div>
-      <div><span class="status-pill status-boarding">Boarding</span></div>
+      <div>
+        <span class="status-pill status-boarding">Boarding</span>
+      </div>
     </div>
-    <div class="fids-row" onclick="document.getElementById('card-gh').scrollIntoView({behavior:'smooth'})">
+
+    <div class="fids-row"
+         onclick="document.getElementById('card-gh').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-002</div>
       <div class="flight-name">GitHub Live Dashboard</div>
       <div class="flight-gate">React · GitHub API</div>
       <div class="flight-gate">G2</div>
-      <div><span class="status-pill status-departed">Departed</span></div>
+      <div>
+        <span class="status-pill status-departed">Departed</span>
+      </div>
     </div>
-    <div class="fids-row" onclick="document.getElementById('card-n8n').scrollIntoView({behavior:'smooth'})">
+
+    <div class="fids-row"
+         onclick="document.getElementById('card-n8n').scrollIntoView({behavior:'smooth'})">
       <div class="flight-num">IR-004</div>
       <div class="flight-name">n8n Automation Suite</div>
       <div class="flight-gate">n8n · REST · Webhooks</div>
       <div class="flight-gate">G3</div>
-      <div><span class="status-pill status-ontime">On Time</span></div>
+      <div>
+        <span class="status-pill status-ontime">On Time</span>
+      </div>
     </div>
-    <div class="fids-row" onclick="openExpAndScrollTo('exp-section')">
+
+    <div class="fids-row"
+         onclick="openExpAndScrollTo('exp-section')">
       <div class="flight-num">IR-EXP</div>
       <div class="flight-name">Experience · Flight Log</div>
       <div class="flight-gate">Logitrans Logistics</div>
       <div class="flight-gate">G4</div>
-      <div><span class="status-pill status-ontime">View ▸</span></div>
+      <div>
+        <span class="status-pill status-ontime">View ▸</span>
+      </div>
     </div>
-    <div class="fids-row" onclick="openExpAndScrollTo('cert-section')">
+
+    <div class="fids-row"
+         onclick="openExpAndScrollTo('cert-section')">
       <div class="flight-num">IR-CERT</div>
       <div class="flight-name">Certifications</div>
       <div class="flight-gate">Stanford · Coursera</div>
       <div class="flight-gate">G5</div>
-      <div><span class="status-pill status-boarding">Verified</span></div>
+      <div>
+        <span class="status-pill status-boarding">Verified</span>
+      </div>
     </div>
+
   </div>
 </div>
 
+
 <!-- ROW 1: PROJECTS + PASSPORT -->
 <div class="section-grid">
+
+  <!-- PROJECTS -->
   <div class="panel reveal" id="projects-panel">
+
     <div class="panel-label">Projects · Baggage Claim</div>
 
+    <!-- PROJECT 1 -->
     <div class="project-card">
+
       <div class="project-card-top">
         <div>
           <div class="card-flight">IR-001 · BOARDING</div>
-          <div class="project-title" style="margin-top:4px">StudyNest</div>
+
+          <div class="project-title" style="margin-top:4px">
+            <a href="[https://iamiremidil.github.io/study-nest/]"
+               target="_blank"
+               rel="noopener noreferrer">
+              StudyNest
+            </a>
+
+            <a class="project-link"
+               href="[https://iamiremidil.github.io/study-nest/]"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open StudyNest">
+              ↗
+            </a>
+          </div>
         </div>
+
         <span class="status-pill status-boarding">Live</span>
       </div>
-      <div class="project-desc">Study-tracker with Pomodoro timer, friend system, messaging, dark/light mode, settings hub. GitHub sync coming soon.</div>
-      <div class="project-tags">
-        <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Socket.io</span><span class="tag">Supabase</span>
+
+      <div class="project-desc">
+        Study-tracker with Pomodoro timer, friend system, messaging,
+        dark/light mode, settings hub.
       </div>
+
+      <div class="project-tags">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+      </div>
+
     </div>
 
+
+    <!-- PROJECT 2 -->
     <div class="project-card" id="card-gh">
+
       <div class="project-card-top">
         <div>
           <div class="card-flight">IR-002 · DEPARTED</div>
-          <div class="project-title" style="margin-top:4px">GitHub Live Dashboard</div>
+
+          <div class="project-title" style="margin-top:4px">
+            <a href="[GITHUB_DASHBOARD_REPO_URL]"
+               target="_blank"
+               rel="noopener noreferrer">
+              GitHub Live Dashboard
+            </a>
+
+            <a class="project-link"
+               href="[GITHUB_DASHBOARD_REPO_URL]"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open GitHub Live Dashboard">
+              ↗
+            </a>
+          </div>
         </div>
+
         <span class="status-pill status-departed">Shipped</span>
       </div>
-      <div class="project-desc">Real-time GitHub activity dashboard. Live stats, contribution graphs, repo drill-down.</div>
-      <div class="project-tags">
-        <span class="tag">React</span><span class="tag">GitHub API</span><span class="tag">Recharts</span>
+
+      <div class="project-desc">
+        Real-time GitHub activity dashboard. Live stats,
+        contribution graphs, repo drill-down.
       </div>
+
+      <div class="project-tags">
+        <span class="tag">React</span>
+        <span class="tag">GitHub API</span>
+      </div>
+
     </div>
 
+
+    <!-- PROJECT 3 -->
     <div class="project-card" id="card-n8n">
+
       <div class="project-card-top">
         <div>
           <div class="card-flight">IR-004 · ON TIME</div>
-          <div class="project-title" style="margin-top:4px">n8n Automation Projects</div>
+
+          <div class="project-title" style="margin-top:4px">
+            <a href="[N8N_PROJECT_REPO_URL]"
+               target="_blank"
+               rel="noopener noreferrer">
+              n8n Automation Projects
+            </a>
+
+            <a class="project-link"
+               href="[N8N_PROJECT_REPO_URL]"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Open n8n Automation Projects">
+              ↗
+            </a>
+          </div>
         </div>
+
         <span class="status-pill status-ontime">Active</span>
       </div>
-      <div class="project-desc">Internal company automations: webhook pipelines, data sync, notification routing, report generation.</div>
-      <div class="project-tags">
-        <span class="tag">n8n</span><span class="tag">REST APIs</span><span class="tag">Webhooks</span><span class="tag">Automation</span>
+
+      <div class="project-desc">
+        Internal company automations: webhook pipelines,
+        data sync, notification routing, report generation.
       </div>
+
+      <div class="project-tags">
+        <span class="tag">n8n</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Webhooks</span>
+        <span class="tag">Automation</span>
+      </div>
+
     </div>
+
   </div>
 
-  <!-- RIGHT: PASSPORT + GATE INFO -->
+
+  <!-- PASSPORT -->
   <div class="panel reveal">
+
     <div class="panel-label">Passport · About</div>
+
     <div class="passport-panel">
-      <div class="passport-photo">✈</div>
+
+      <div class="passport-photo">
+        ✈
+      </div>
+
       <div class="passport-data">
+
         <div class="passport-field">
           <div class="passport-field-label">Name</div>
           <div class="passport-field-value">Irem Idil</div>
         </div>
+
         <div class="passport-field">
           <div class="passport-field-label">Role</div>
-          <div class="passport-field-value">Computer Engineering Student</div>
+          <div class="passport-field-value">
+            Computer Engineering Student
+          </div>
         </div>
+
+        <!-- NEW -->
+        <div class="passport-field">
+          <div class="passport-field-label">University</div>
+          <div class="passport-field-value">
+            Istanbul Okan University
+          </div>
+        </div>
+
+        <!-- NEW -->
+        <div class="passport-field">
+          <div class="passport-field-label">Graduation</div>
+          <div class="passport-field-value">
+            2027
+          </div>
+        </div>
+
         <div class="passport-field">
           <div class="passport-field-label">Hub</div>
-          <div class="passport-field-value">Istanbul (IST) · Turkey</div>
+          <div class="passport-field-value">
+            Istanbul (IST) · Türkiye
+          </div>
         </div>
+
         <div class="passport-field">
           <div class="passport-field-label">Clearances</div>
-          <div class="passport-field-value">Full-Stack · AI · Automation</div>
+          <div class="passport-field-value">
+            Full-Stack · AI · Automation
+          </div>
         </div>
+
+        <!-- NEW -->
+        <div class="passport-field">
+          <div class="passport-field-label">Languages</div>
+          <div class="passport-field-value">
+            Turkish · Native<br>
+            English · [C1 / Fluent]
+          </div>
+        </div>
+
         <div class="passport-field">
           <div class="passport-field-label">Status</div>
-          <div class="passport-field-value" style="color:var(--green)">● Open to Work</div>
+          <div class="passport-field-value"
+               style="color:var(--green)">
+            ● Open to Work
+          </div>
         </div>
+
         <div class="passport-mrz">
-          P&lt;TUR&lt;IremIdil&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
-          N8N&lt;DEV&lt;COMPUTER&lt;ENGINEERING&lt;STUDENT&lt;2026&lt;IST&lt;&lt;
+          P&lt;TUR&lt;IremIdil&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+          N8N&lt;DEV&lt;COMPUTER&lt;ENGINEERING&lt;STUDENT&lt;2027&lt;IST&lt;&lt;
         </div>
+
       </div>
     </div>
 
-    <div class="panel-label" style="margin-top:28px">Gate Info · Contact</div>
+
+    <div class="panel-label" style="margin-top:28px">
+      Gate Info · Contact
+    </div>
+
     <div class="gate-info">
+
       <div class="gate-row">
         <span>GITHUB</span>
-        <a href="https://github.com/iamiremidil" target="_blank" rel="noopener noreferrer">github.com/iamiremidil</a>
+
+        <a href="https://github.com/iamiremidil"
+           target="_blank"
+           rel="noopener noreferrer">
+          github.com/iamiremidil
+        </a>
       </div>
+
       <div class="gate-row">
         <span>LINKEDIN</span>
-        <a href="https://linkedin.com/in/iamiremidil" target="_blank" rel="noopener noreferrer">linkedin.com/in/iamiremidil</a>
+
+        <a href="https://linkedin.com/in/iamiremidil"
+           target="_blank"
+           rel="noopener noreferrer">
+          linkedin.com/in/iamiremidil
+        </a>
       </div>
+
       <div class="gate-row" style="border-bottom:none">
         <span>EMAIL</span>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iamiremidil@gmail.com" target="_blank" rel="noopener noreferrer">iamiremidil@gmail.com</a>
+
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=iamiremidil@gmail.com"
+           target="_blank"
+           rel="noopener noreferrer">
+          iamiremidil@gmail.com
+        </a>
       </div>
+
     </div>
+
   </div>
+
 </div>
 
-<!-- ROW 2: SKILLS + CURRENTLY LEARNING (aligned below row 1) -->
+
+<!-- ROW 2: SKILLS + CURRENTLY LEARNING -->
 <div class="section-grid">
+
   <div class="panel reveal">
-    <div class="panel-label">Flight Status · Skills</div>
+
+    <div class="panel-label">
+      Flight Status · Skills
+    </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">HTML / CSS</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:50%"></div></div>
+      <span style="width:120px;font-size:12px">
+        HTML / CSS
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill" style="width:50%"></div>
+      </div>
+
       <span class="status-lbl">not bad</span>
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">Node / Express</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:78%"></div></div>
+      <span style="width:120px;font-size:12px">
+        Node / Express
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill" style="width:78%"></div>
+      </div>
+
       <span class="status-lbl">good</span>
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">Python / ML</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:60%"></div></div>
+      <span style="width:120px;font-size:12px">
+        Python / ML
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill" style="width:60%"></div>
+      </div>
+
       <span class="status-lbl">decent</span>
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">MongoDB</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:70%"></div></div>
+      <span style="width:120px;font-size:12px">
+        MongoDB
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill" style="width:70%"></div>
+      </div>
+
       <span class="status-lbl">decent</span>
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">n8n / Automation</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:80%"></div></div>
+      <span style="width:120px;font-size:12px">
+        n8n / Automation
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill" style="width:80%"></div>
+      </div>
+
       <span class="status-lbl">great</span>
     </div>
+
   </div>
+
 
   <div class="panel reveal">
-    <div class="panel-label">Currently Learning · Boarding</div>
-    <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">Web Development</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:55%;background:var(--blue)"></div></div>
-      <span class="status-lbl" style="color:var(--blue)">in progress</span>
+
+    <div class="panel-label">
+      Currently Learning · Boarding
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">AI/ML (course)</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:40%;background:var(--blue)"></div></div>
-      <span class="status-lbl" style="color:var(--blue)">departed</span>
+      <span style="width:120px;font-size:12px">
+        Web Development
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill"
+             style="width:55%;background:var(--blue)">
+        </div>
+      </div>
+
+      <span class="status-lbl"
+            style="color:var(--blue)">
+        in progress
+      </span>
     </div>
+
     <div class="flight-status-row">
-      <span style="width:120px;font-size:12px">Docker</span>
-      <div class="status-bar"><div class="status-bar-fill" style="width:30%;background:var(--blue)"></div></div>
-      <span class="status-lbl" style="color:var(--blue)">taxiing</span>
+      <span style="width:120px;font-size:12px">
+        AI/ML (course)
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill"
+             style="width:40%;background:var(--blue)">
+        </div>
+      </div>
+
+      <span class="status-lbl"
+            style="color:var(--blue)">
+        departed
+      </span>
     </div>
+
+    <div class="flight-status-row">
+      <span style="width:120px;font-size:12px">
+        Docker
+      </span>
+
+      <div class="status-bar">
+        <div class="status-bar-fill"
+             style="width:30%;background:var(--blue)">
+        </div>
+      </div>
+
+      <span class="status-lbl"
+            style="color:var(--blue)">
+        taxiing
+      </span>
+    </div>
+
   </div>
+
 </div>
 
-<!-- EXPERIENCE (collapsible) -->
+
+<!-- EXPERIENCE -->
 <div class="exp-section" id="exp-section">
-  <button class="exp-toggle" id="expToggle" onclick="toggleExp()">
+
+  <button class="exp-toggle"
+          id="expToggle"
+          onclick="toggleExp()">
+
     <span class="exp-caret" id="expCaret">▶</span>
     Experience · Flight Log
+
   </button>
+
+
   <div class="exp-body" id="expBody">
+
     <div class="exp-inner">
+
       <div class="exp-grid">
 
+
+        <!-- EXPERIENCE 1 -->
         <div class="exp-card">
-          <div class="exp-card-label">IR-EXP-01 · VOLUNTARY INTERNSHIP </div>
-          <div class="exp-card-title">AI Agent Developer & Prompt Engineer</div>
-          <div class="exp-card-company">Logitrans Logistics</div>
+
+          <div class="exp-card-label">
+            IR-EXP-01 · VOLUNTARY INTERNSHIP · 12/2025-06/2026
+          </div>
+
+          <div class="exp-card-title">
+            RAG Customer Support Chatbot (n8n + Ollama) developer
+          </div>
+
+          <div class="exp-card-company">
+            Logitrans Logistics
+          </div>
+
+          <!-- NEW IMPACT -->
+          <div class="exp-impact">
+            <span class="exp-impact-label">IMPACT //</span>
+            Automized customer support for logistics Q&A.
+          </div>
+
           <ul class="exp-bullets">
-            <li>Built and optimized AI agent workflows with n8n; integrated webhook-based pipelines with MongoDB knowledge bases and locally-run LLMs (Ollama / LLaMA 3.1).</li>
-            <li>Engineered prompts for structured LLM output in production pipelines; resolved context-overflow issues with multi-stage Code node filtering on large keyword datasets (~900 entries).</li>
-            <li>Hands-on experience in prompt engineering, agentic system design, and connecting disparate services via HTTP and custom automation flows.</li>
+
+            <li>
+              Bilingual (Turkish/English) chatbot built in n8n using a local Ollama model
+              (llama3.1:8b) and Qdrant for vector search.
+            </li>
+
+            <li>
+              Uses HyDE retrieval and relevance thresholds to
+              reduce hallucinations.
+            </li>
+
+            <li>
+              No external API - fully self-hosted inference.
+            </li>
+
           </ul>
+
         </div>
 
+
+        <!-- EXPERIENCE 2 -->
         <div class="exp-card">
-          <div class="exp-card-label">IR-EXP-02 · MANDATORY INTERNSHIP</div>
-          <div class="exp-card-title">OCR System Developer</div>
-          <div class="exp-card-company">Logitrans Logistics</div>
+
+          <div class="exp-card-label">
+            IR-EXP-02 · MANDATORY INTERNSHIP · 07/2026 - 08/2026
+          </div>
+
+          <div class="exp-card-title">
+            OCR System Developer
+          </div>
+
+          <div class="exp-card-company">
+            Logitrans Logistics
+          </div>
+
+          <!-- NEW IMPACT -->
+          <div class="exp-impact">
+            <span class="exp-impact-label">IMPACT //</span>
+            Automated document extraction and matching,
+            saving time on manual processing.
+          </div>
+
           <ul class="exp-bullets">
-            <li>Built an OCR-based document processing pipeline to extract structured data from logistics documents (T1, export declarations, CMR, TIR carnet); automated buyer-seller matching and document grouping.</li>
-            <li>Integrated a RAG architecture with MongoDB for document type and party detection; AI agent operates on a custom knowledge base. Extracted data triggers email dispatch via a Node.js interface.</li>
+
+            <li>
+              Built an OCR-based document processing pipeline
+              to extract structured data from logistics documents
+              (T1, export declarations, CMR, TIR carnet);
+              automated buyer-seller matching and document grouping.
+            </li>
+
+            <li>
+              Integrated a RAG architecture with MongoDB for
+              document type and party detection; AI agent operates
+              on a custom knowledge base. Extracted data triggers
+              email dispatch via a Node.js interface.
+            </li>
+
           </ul>
+
         </div>
 
+
+        <!-- EXPERIENCE 3 -->
         <div class="exp-card">
-          <div class="exp-card-label">IR-EXP-03 · MANDATORY INTERNSHIP · IN PROGRESS</div>
-          <div class="exp-card-title">Logistics Document Validation System</div>
-          <div class="exp-card-company">Logitrans Logistics</div>
+
+          <div class="exp-card-label">
+            IR-EXP-03 · MANDATORY INTERNSHIP · IN PROGRESS
+          </div>
+
+          <div class="exp-card-title">
+            Logistics Document Validation System
+          </div>
+
+          <div class="exp-card-company">
+            Logitrans Logistics
+          </div>
+
+          <!-- NEW IMPACT -->
+          <div class="exp-impact">
+            <span class="exp-impact-label">IMPACT //</span>
+            Designed to reduce manual document validation and check for inconsistencies and missing information.
+          </div>
+
           <ul class="exp-bullets">
-            <li>Developing an end-to-end automation system for checking if logistics documents have inconsistencies or missing information.</li>
-            <li>The AI agent will take the OCR output, parse each document and determine the types for each document using the knowledgebases on mongoDB. It'll list missing documents or inconsistent information per record. Results will be written to MongoDB and displayed in the UI.</li>
+
+            <li>
+              Developing an end-to-end automation system for
+              checking if logistics documents have inconsistencies
+              or missing information.
+            </li>
+
+            <li>
+              The AI agent takes OCR output, parses each document
+              and determines document types using knowledge bases
+              on MongoDB. It identifies missing documents and
+              inconsistent information per record.
+            </li>
+
+            <li>
+              Results are written to MongoDB and displayed
+              through the system UI.
+            </li>
+
           </ul>
+
         </div>
+
 
       </div>
     </div>
   </div>
 </div>
 
-<!-- CERTIFICATIONS (collapsible) -->
+
+<!-- CERTIFICATIONS -->
 <div class="exp-section" id="cert-section">
-  <button class="exp-toggle" id="certToggle" onclick="toggleCert()">
+
+  <button class="exp-toggle"
+          id="certToggle"
+          onclick="toggleCert()">
+
     <span class="exp-caret" id="certCaret">▶</span>
     Certifications · Clearances
+
   </button>
+
+
   <div class="exp-body" id="certBody">
+
     <div class="exp-inner">
+
       <div style="padding: 0 40px 32px;">
-        <div class="exp-card" style="max-width:480px">
-          <div class="exp-card-label">IR-CERT-01 · VERIFIED</div>
-          <div class="exp-card-title">Machine Learning Specialization</div>
-          <div class="exp-card-company">Stanford University · Coursera &nbsp;|&nbsp; August 2024</div>
+
+        <div class="exp-card" style="max-width:520px">
+
+          <div class="exp-card-label">
+            IR-CERT-01 · VERIFIED
+          </div>
+
+
+          <div class="cert-row"
+               style="border-top:none;padding-top:0">
+
+            <!-- NEW LOGO PLACEHOLDER -->
+            <div class="cert-logo">
+              STANFORD<br>
+              LOGO
+            </div>
+
+
+            <div class="cert-info">
+
+              <div class="exp-card-title">
+                Machine Learning Specialization
+              </div>
+
+              <div class="exp-card-company"
+                   style="margin-bottom:0">
+
+                Stanford University · Coursera
+                &nbsp;|&nbsp; August 2024
+
+                <!-- NEW VERIFICATION LINK -->
+                <a class="cert-link"
+                   href="[https://coursera.org/share/9e5886de762864c2e5d251246ef69cc3]"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                  ↗ VERIFY
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
 </div>
+
 
 <!-- FOOTER -->
 <footer>
-  <span>TERMINAL Irem Idil · ALL TIMES LOCAL (UTC+3)</span>
-  <span>DESIGNED WITH ✈ · <span style="color:var(--amber)">OPEN TO WORK</span></span>
+
+  <span>
+    TERMINAL Irem Idil · ALL TIMES LOCAL (UTC+3)
+  </span>
+
+  <span>
+    DESIGNED WITH ✈ ·
+    <span style="color:var(--amber)">
+      OPEN TO WORK
+    </span>
+  </span>
+
 </footer>
 
+
 <script>
+
   // ── CLOCK ──
+
   function tick() {
     document.getElementById('clock').textContent =
-      new Date().toLocaleTimeString('en-GB', { hour12: false }) + ' UTC+3';
+      new Date().toLocaleTimeString('en-GB', {
+        hour12: false
+      }) + ' UTC+3';
   }
-  tick(); setInterval(tick, 1000);
+
+  tick();
+  setInterval(tick, 1000);
+
 
   // ── SOUND ──
+
   let soundOn = true;
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+
+  const ctx =
+    new (window.AudioContext || window.webkitAudioContext)();
 
   function playDing(freq = 880, duration = 0.6) {
+
     if (!soundOn) return;
+
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.connect(gain); gain.connect(ctx.destination);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-    gain.gain.setValueAtTime(0.18, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-    osc.start(); osc.stop(ctx.currentTime + duration);
+
+    osc.frequency.setValueAtTime(
+      freq,
+      ctx.currentTime
+    );
+
+    gain.gain.setValueAtTime(
+      0.18,
+      ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      ctx.currentTime + duration
+    );
+
+    osc.start();
+    osc.stop(ctx.currentTime + duration);
   }
+
 
   function playBoardingChime() {
-    [587, 440, 349].forEach((f, i) => setTimeout(() => playDing(f, 0.5), i * 220));
+
+    [587, 440, 349].forEach((f, i) =>
+
+      setTimeout(
+        () => playDing(f, 0.5),
+        i * 220
+      )
+
+    );
   }
+
 
   function toggleSound() {
+
     soundOn = !soundOn;
-    document.getElementById('soundBtn').textContent = soundOn ? '♪ SFX ON' : '♪ SFX OFF';
-    if (soundOn) { ctx.resume(); playDing(660, 0.3); }
+
+    document.getElementById('soundBtn').textContent =
+      soundOn ? '♪ SFX ON' : '♪ SFX OFF';
+
+    if (soundOn) {
+      ctx.resume();
+      playDing(660, 0.3);
+    }
   }
+
 
   // ── COLLAPSIBLE HELPER ──
+
   function openSection(bodyId, toggleId, caretId) {
-    const body   = document.getElementById(bodyId);
-    const toggle = document.getElementById(toggleId);
-    const caret  = document.getElementById(caretId);
-    const open   = body.classList.toggle('open');
+
+    const body =
+      document.getElementById(bodyId);
+
+    const toggle =
+      document.getElementById(toggleId);
+
+    const caret =
+      document.getElementById(caretId);
+
+    const open =
+      body.classList.toggle('open');
+
     toggle.classList.toggle('open', open);
-    caret.textContent = open ? '▼' : '▶';
+
+    caret.textContent =
+      open ? '▼' : '▶';
+
     if (open) {
+
       playDing(740, 0.2);
-      setTimeout(() => body.querySelectorAll('.exp-card').forEach((c, i) => {
-        c.style.opacity = '0'; c.style.transform = 'translateY(8px)';
-        c.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 80);
-      }), 50);
+
+      setTimeout(() =>
+
+        body.querySelectorAll('.exp-card')
+          .forEach((c, i) => {
+
+            c.style.opacity = '0';
+
+            c.style.transform =
+              'translateY(8px)';
+
+            c.style.transition =
+              'opacity 0.3s ease, transform 0.3s ease';
+
+            setTimeout(() => {
+
+              c.style.opacity = '1';
+
+              c.style.transform =
+                'translateY(0)';
+
+            }, i * 80);
+
+          }),
+
+        50
+      );
     }
+
     return open;
   }
-  function toggleExp()  { openSection('expBody',  'expToggle',  'expCaret');  }
-  function toggleCert() { openSection('certBody', 'certToggle', 'certCaret'); }
 
-  function openExpAndScrollTo(targetId) {
-    const isExp  = targetId === 'exp-section';
-    const isCert = targetId === 'cert-section';
-    if (isExp) {
-      const body = document.getElementById('expBody');
-      if (!body.classList.contains('open')) openSection('expBody','expToggle','expCaret');
-    }
-    if (isCert) {
-      const body = document.getElementById('certBody');
-      if (!body.classList.contains('open')) openSection('certBody','certToggle','certCaret');
-    }
-    setTimeout(() => document.getElementById(targetId).scrollIntoView({behavior:'smooth'}), 50);
+
+  function toggleExp() {
+    openSection(
+      'expBody',
+      'expToggle',
+      'expCaret'
+    );
   }
 
-  // ── SPLIT-FLAP HERO ──
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-·';
-  const target = 'Irem\u00A0Idil';
-  const heroEl = document.getElementById('hero-text');
-  heroEl.innerHTML = target.split('').map((c, i) =>
-    `<span class="flap-char" id="fc${i}">${c}</span>`
-  ).join('');
-  target.split('').forEach((finalChar, i) => {
-    const span = document.getElementById('fc' + i);
-    let ticks = 0;
-    const max = 8 + i * 4;
-    const iv = setInterval(() => {
-      span.textContent = chars[Math.floor(Math.random() * chars.length)];
-      span.classList.add('flipping');
-      setTimeout(() => span.classList.remove('flipping'), 80);
-      if (++ticks >= max) {
-        clearInterval(iv);
-        span.textContent = finalChar;
-        if (i === target.length - 1) setTimeout(playBoardingChime, 200);
+
+  function toggleCert() {
+    openSection(
+      'certBody',
+      'certToggle',
+      'certCaret'
+    );
+  }
+
+
+  function openExpAndScrollTo(targetId) {
+
+    const isExp =
+      targetId === 'exp-section';
+
+    const isCert =
+      targetId === 'cert-section';
+
+
+    if (isExp) {
+
+      const body =
+        document.getElementById('expBody');
+
+      if (!body.classList.contains('open')) {
+
+        openSection(
+          'expBody',
+          'expToggle',
+          'expCaret'
+        );
       }
-    }, 55);
-  });
+    }
+
+
+    if (isCert) {
+
+      const body =
+        document.getElementById('certBody');
+
+      if (!body.classList.contains('open')) {
+
+        openSection(
+          'certBody',
+          'certToggle',
+          'certCaret'
+        );
+      }
+    }
+
+
+    setTimeout(
+      () =>
+        document
+          .getElementById(targetId)
+          .scrollIntoView({
+            behavior: 'smooth'
+          }),
+      50
+    );
+  }
+
+
+  // ── SPLIT-FLAP HERO ──
+
+  const chars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-·';
+
+  const target =
+    'Irem\u00A0Idil';
+
+  const heroEl =
+    document.getElementById('hero-text');
+
+  heroEl.innerHTML =
+    target
+      .split('')
+      .map((c, i) =>
+        `<span class="flap-char" id="fc${i}">
+          ${c}
+        </span>`
+      )
+      .join('');
+
+
+  target.split('').forEach(
+    (finalChar, i) => {
+
+      const span =
+        document.getElementById('fc' + i);
+
+      let ticks = 0;
+
+      const max =
+        8 + i * 4;
+
+
+      const iv =
+        setInterval(() => {
+
+          span.textContent =
+            chars[
+              Math.floor(
+                Math.random() * chars.length
+              )
+            ];
+
+          span.classList.add('flipping');
+
+          setTimeout(
+            () =>
+              span.classList.remove('flipping'),
+            80
+          );
+
+
+          if (++ticks >= max) {
+
+            clearInterval(iv);
+
+            span.textContent =
+              finalChar;
+
+            if (
+              i ===
+              target.length - 1
+            ) {
+
+              setTimeout(
+                playBoardingChime,
+                200
+              );
+            }
+          }
+
+        }, 55);
+    }
+  );
+
 
   // ── TICKER ──
+
   const tickerLines = [
+
     '3 PROJECTS SHIPPED',
+
     'ISTANBUL → ANYWHERE',
+
     'BUILDS THINGS THAT WORK',
+
     'FUTURE 2027 GRADUATE',
+
     'CURRENTLY: INTERN @ LOGITRANS',
-    'CATS: 3 · BUGS FIXED: MORE',
+
+    'CATS: 3 · BUGS FIXED: MORE'
+
   ];
+
+
   let tickerIdx = 0;
-  const tickerEl = document.getElementById('ticker-slot');
+
+  const tickerEl =
+    document.getElementById(
+      'ticker-slot'
+    );
+
+
   setInterval(() => {
-    tickerIdx = (tickerIdx + 1) % tickerLines.length;
-    tickerEl.classList.add('exit-up');
+
+    tickerIdx =
+      (tickerIdx + 1) %
+      tickerLines.length;
+
+    tickerEl.classList.add(
+      'exit-up'
+    );
+
+
     setTimeout(() => {
-      tickerEl.textContent = tickerLines[tickerIdx];
-      tickerEl.classList.remove('exit-up');
-      tickerEl.classList.add('enter-down');
-      requestAnimationFrame(() => requestAnimationFrame(() => tickerEl.classList.remove('enter-down')));
+
+      tickerEl.textContent =
+        tickerLines[tickerIdx];
+
+      tickerEl.classList.remove(
+        'exit-up'
+      );
+
+      tickerEl.classList.add(
+        'enter-down'
+      );
+
+
+      requestAnimationFrame(() =>
+
+        requestAnimationFrame(() =>
+          tickerEl.classList.remove(
+            'enter-down'
+          )
+        )
+
+      );
+
     }, 260);
+
   }, 2800);
 
+
   // ── SCROLL REVEAL ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, idx) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), idx * 80);
-        observer.unobserve(e.target);
+
+  const observer =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(
+          (e, idx) => {
+
+            if (e.isIntersecting) {
+
+              setTimeout(
+                () =>
+                  e.target.classList.add(
+                    'visible'
+                  ),
+                idx * 80
+              );
+
+              observer.unobserve(
+                e.target
+              );
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.1
       }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    );
+
+
+  document
+    .querySelectorAll('.reveal')
+    .forEach(el =>
+      observer.observe(el)
+    );
+
 
   // ── FIDS HOVER DING ──
-  document.querySelectorAll('.fids-row').forEach(row => {
-    row.addEventListener('mouseenter', () => playDing(1046, 0.15));
-  });
 
-  window.addEventListener('load', () => setTimeout(playBoardingChime, 800));
+  document
+    .querySelectorAll('.fids-row')
+    .forEach(row => {
+
+      row.addEventListener(
+        'mouseenter',
+        () =>
+          playDing(1046, 0.15)
+      );
+
+    });
+
+
+  window.addEventListener(
+    'load',
+    () =>
+      setTimeout(
+        playBoardingChime,
+        800
+      )
+  );
+
 </script>
+
 </body>
 </html>
