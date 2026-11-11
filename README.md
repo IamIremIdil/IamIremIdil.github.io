@@ -3,7 +3,7 @@
 Personal portfolio -  styled as an airport terminal.  
 Departures board, passport, gate info, flight status.
 
-**[→ iremidil.com](https://iamiremidil.github.io/)**
+**[→ portfolio website](https://iamiremidil.github.io/)**
 
 ---
 
